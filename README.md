@@ -1,4 +1,5 @@
 
+
 # 🚀 Spring Boot Queue (ActiveMQ + RabbitMQ)
 
 <p align="center">
@@ -24,10 +25,11 @@ This repository demonstrates **asynchronous messaging using two industry-standar
 * 🔶 Apache ActiveMQ (JMS)
 * 🐰 RabbitMQ (AMQP)
 
-Both implementations support **JSON-based messaging**, but with different approaches:
+Both implementations support **JSON-based messaging**, showcasing:
 
-* ActiveMQ → Manual JSON serialization/deserialization
-* RabbitMQ → Automatic JSON conversion
+* Producer → Broker → Consumer flow
+* Manual vs automatic JSON handling
+* Real-world event-driven architecture patterns
 
 ---
 
@@ -35,7 +37,7 @@ Both implementations support **JSON-based messaging**, but with different approa
 
 ## 🔶 ActiveMQ (JMS)
 
-```text
+```text id="1l0k3z"
 Client → REST → Producer → Queue → Consumer (manual JSON parsing)
 ```
 
@@ -43,7 +45,7 @@ Client → REST → Producer → Queue → Consumer (manual JSON parsing)
 
 ## 🐰 RabbitMQ (AMQP)
 
-```text
+```text id="yqds3u"
 Client → REST → Producer → Exchange → Queue → Consumer (auto JSON mapping)
 ```
 
@@ -51,29 +53,23 @@ Client → REST → Producer → Exchange → Queue → Consumer (auto JSON mapp
 
 # 📦 Project Structure
 
-```text
+```text id="fzn7ub"
 spring-boot-queue
 │
 ├── spring-boot-apache-activemq/
-│   ├── config/
-│   ├── producer/
-│   ├── consumer/
-│   └── controller/
+│   └── HELP.md   # 📘 Detailed ActiveMQ implementation
 │
 ├── spring-boot-rabbitmq/
-│   ├── config/
-│   ├── producer/
-│   ├── consumer/
-│   └── controller/
+│   └── HELP.md   # 📘 Detailed RabbitMQ implementation
 │
-└── common/
+└── docker-compose.yml
 ```
 
 ---
 
 # 🐳 Running the Project
 
-```bash
+```bash id="c88fjf"
 docker-compose up -d
 ```
 
@@ -88,113 +84,43 @@ docker-compose up -d
 
 ---
 
-# 🧪 API Endpoints
+# 🧪 Messaging Overview
+
+## 🔶 ActiveMQ
+
+* Uses **JMS (Java Message Service)**
+* Sends JSON as **String (TextMessage)**
+* Consumer manually converts JSON → Object
 
 ---
 
-# 🔶 ActiveMQ API (JSON via String)
+## 🐰 RabbitMQ
 
-## 📤 Send Message
-
-```http
-POST /producer?message={"orderId":"ORD-101","product":"Laptop","quantity":2}
-```
-
-### 🔹 Example
-
-```bash
-curl -X POST "http://localhost:8080/producer?message={\"orderId\":\"ORD-101\",\"product\":\"Laptop\",\"quantity\":2}"
-```
+* Uses **AMQP protocol**
+* Sends **structured JSON object**
+* Spring automatically converts JSON → Java object
 
 ---
 
-## 📥 Consumer (Manual JSON Parsing)
+# 🧠 Key Learning
 
-```java
-@JmsListener(destination = "demo.activemqjson")
-public void receiveJson(TextMessage message) {
-    String json = message.getText();
-    OrderMessage order = objectMapper.readValue(json, OrderMessage.class);
-    System.out.println("Received Object: " + order);
-}
-```
+This project highlights an important real-world difference:
 
----
-
-## 🧾 Output
-
-```text
-Produced message: {"orderId":"ORD-101","product":"Laptop","quantity":2}
-Received Object: OrderMessage(orderId=ORD-101, product=Laptop, quantity=2)
-```
+| Concept       | ActiveMQ                | RabbitMQ             |
+| ------------- | ----------------------- | -------------------- |
+| JSON Handling | Manual (`ObjectMapper`) | Automatic            |
+| Message Type  | TextMessage             | POJO                 |
+| Complexity    | Higher                  | Lower                |
+| Use Case      | Legacy / Enterprise     | Modern Microservices |
 
 ---
 
-# 🐰 RabbitMQ API (JSON via RequestBody)
+# 📘 Detailed Implementation
 
-## 📤 Send Message
+👉 For **exact endpoints, request/response, and full implementation details**, refer:
 
-```http
-POST /producer
-Content-Type: application/json
-```
-
----
-
-## 📩 Request Body
-
-```json
-{
-  "orderId": "ORD-201",
-  "product": "Phone",
-  "quantity": 1
-}
-```
-
----
-
-## 📥 Consumer (Auto Mapping)
-
-```java
-@RabbitListener(queues = "your-queue-name")
-public void consume(OrderMessage message) {
-    System.out.println("Received message: " + message);
-}
-```
-
----
-
-## 🧾 Output
-
-```text
-Message sent : OrderMessage(orderId=ORD-201, product=Phone, quantity=1)
-Received message: OrderMessage(orderId=ORD-201, product=Phone, quantity=1)
-```
-
----
-
-# 🧠 Message Model
-
-```java
-class OrderMessage {
-    private String orderId;
-    private String product;
-    private int quantity;
-}
-```
-
----
-
-# 🔁 ActiveMQ vs RabbitMQ (Your Implementation)
-
-| Feature          | ActiveMQ                | RabbitMQ      |
-| ---------------- | ----------------------- | ------------- |
-| Protocol         | JMS                     | AMQP          |
-| Input Type       | Query Param             | JSON Body     |
-| JSON Handling    | Manual (`ObjectMapper`) | Automatic     |
-| Message Type     | TextMessage             | Object        |
-| Complexity       | Medium                  | Low           |
-| Real-world usage | Legacy / Enterprise     | Microservices |
+* 📂 `spring-boot-apache-activemq/HELP.md`
+* 📂 `spring-boot-rabbitmq/HELP.md`
 
 ---
 
@@ -205,26 +131,25 @@ class OrderMessage {
 * ✅ Manual vs automatic serialization comparison
 * ✅ REST-based producers
 * ✅ Async consumers
-* ✅ Docker support
+* ✅ Dockerized setup
 
 ---
 
 # 🧠 Concepts Covered
 
 * JMS vs AMQP
-* JSON serialization/deserialization
 * Producer-Consumer pattern
 * Event-driven architecture
-* Message conversion strategies
+* Message serialization strategies
+* Queue vs Exchange
 
 ---
 
 # ⚠️ Important Notes
 
-* ActiveMQ requires **manual JSON parsing**
-* RabbitMQ uses **Spring auto conversion**
-* Messages are **consumed once**
+* Messages are **consumed once and removed**
 * No replay support (unlike Kafka)
+* Designed for **async processing systems**
 
 ---
 
@@ -233,8 +158,7 @@ class OrderMessage {
 * Kafka integration
 * Dead Letter Queue (DLQ)
 * Retry mechanisms
-* OpenTelemetry tracing
-* Virtual Threads
+* Observability (OpenTelemetry, Grafana)
 * Distributed deployment
 
 ---
@@ -275,27 +199,18 @@ MIT License
 
 # 🏆 Portfolio Highlight
 
-This project stands out because it demonstrates:
+This project demonstrates:
 
-* Two messaging systems side-by-side
+* Multi-broker messaging expertise
 * Real-world JSON messaging patterns
-* Manual vs automatic serialization strategies
-* Practical event-driven architecture
+* Understanding of JMS vs AMQP
+* Practical event-driven system design
 
 ---
 
 # 💡 Pro Insight
 
-> This project doesn’t just show messaging—it shows how **different brokers handle JSON differently**, which is a key real-world design decision.
+> This project doesn’t just show messaging—it demonstrates how different brokers handle JSON differently, which is a key architectural decision in real systems.
 
 ---
-
-# 🚀 Want to Upgrade This Further?
-
-I can help you add:
-
-* 📊 Architecture diagrams
-* 🔥 Kafka module (complete comparison)
-* 🧠 Observability (traceId, logs, metrics)
-* ⚡ Production-grade retry + DLQ
 
