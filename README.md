@@ -14,6 +14,7 @@ Apache ActiveMQ (JMS) + RabbitMQ (AMQP) with JSON-based messaging
 <img src="https://img.shields.io/badge/RabbitMQ-AMQP-ff6600?style=for-the-badge&logo=rabbitmq" />
 <img src="https://img.shields.io/badge/JSON-Messaging-blue?style=for-the-badge" />
 <img src="https://img.shields.io/badge/Docker-Ready-blue?style=for-the-badge&logo=docker" />
+<img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge">
 </p>
 
 ---
@@ -194,6 +195,7 @@ If this project helped you:
 # 📜 License
 
 This project is licensed under the [MIT License](LICENSE).
+![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 
 ---
 
