@@ -1,0 +1,46 @@
+{
+	"info": {
+		"_postman_id": "c3e6e641-2826-4e94-8a84-994e2bab47c5",
+		"name": "SpringBootActiveMQ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "51097431",
+		"_collection_link": "https://dinesh-veer007-3742855.postman.co/workspace/Dinesh-Veer's-Workspace~15b9f7ea-7442-42d4-838b-7d09807d1468/collection/51097431-c3e6e641-2826-4e94-8a84-994e2bab47c5?action=share&source=collection_link&creator=51097431"
+	},
+	"item": [
+		{
+			"name": "Send String Message",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Send Json Message",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"orderId\":\"1\",\n    \"product\":\"test product\",\n    \"quantity\":100\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/json",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"json"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
