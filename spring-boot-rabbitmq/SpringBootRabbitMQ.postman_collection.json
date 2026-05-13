@@ -1,0 +1,43 @@
+{
+	"info": {
+		"_postman_id": "5ecf4a4f-9351-4521-8c29-1f96ba0b84f8",
+		"name": "SpringBootRabbitMQ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "51097431",
+		"_collection_link": "https://dinesh-veer007-3742855.postman.co/workspace/Dinesh-Veer's-Workspace~15b9f7ea-7442-42d4-838b-7d09807d1468/collection/51097431-5ecf4a4f-9351-4521-8c29-1f96ba0b84f8?action=share&source=collection_link&creator=51097431"
+	},
+	"item": [
+		{
+			"name": "Send String Message",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Send Json Message",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"orderId\":\"1\",\n    \"product\":\"test product\",\n    \"quantity\":100\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080",
+					"host": [
+						"localhost"
+					],
+					"port": "8080"
+				}
+			},
+			"response": []
+		}
+	]
+}
