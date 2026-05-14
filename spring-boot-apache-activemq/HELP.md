@@ -132,6 +132,38 @@ Receive Message: testmessage
 ```
 ---
 
+### 📮 Postman Collection
+
+A ready-to-use Postman collection is included to help you test the REST APIs quickly.
+
+```text
+spring-boot-apache-activemq
+└── SpringBootActiveMQ.postman_collection.json
+```
+
+Import this collection into Postman and execute the sample requests provided.
+
+---
+
+### 📸 Screenshots
+
+The module also contains screenshots of the [Apache ActiveMQ Classic Web Console](https://activemq.apache.org/components/classic/documentation/web-console?utm_source=chatgpt.com) to illustrate:
+
+* Broker dashboard
+* Queue details
+* Enqueued and dequeued message counts
+* Message browsing
+
+```text
+spring-boot-apache-activemq/screenshots/
+├── activemq-dashboard.png
+├── activemq-queues.png
+└── activemq-message-browser.png
+```
+
+---
+
+
 # 🔥 Features
 
 * ✅ JMS-based messaging
