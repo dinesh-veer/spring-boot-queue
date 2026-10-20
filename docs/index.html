@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Spring Boot Queue Documentation</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+
+        Spring Boot Queue
+
+    </div>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="features.html">Features</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="installation.html">Installation</a>
+        <a href="api.html">API</a>
+        <a href="contact.html">Contact</a>
+
+    </nav>
+
+</header>
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>Spring Boot Queue Examples</h1>
+
+        <p>
+
+            Production-ready messaging examples using
+            Spring Boot, Apache ActiveMQ and RabbitMQ.
+
+            Learn queue-based communication through
+            practical examples and complete source code.
+
+        </p>
+
+        <a class="btn"
+           href="projects.html">
+
+            Explore Projects
+
+        </a>
+
+        <a class="btn secondary"
+           href="https://github.com/dinesh-veer/spring-boot-queue"
+           target="_blank">
+
+            GitHub Repository
+
+        </a>
+
+    </div>
+
+</section>
+
+<section class="content">
+
+    <h1>Repository Overview</h1>
+
+    <p>
+
+        This repository demonstrates messaging applications built using
+        Spring Boot and popular message brokers.
+
+        Each project focuses on a specific queue implementation
+        and includes producers,
+        consumers,
+        REST APIs,
+        configuration,
+        Docker support,
+        and complete documentation.
+
+    </p>
+
+</section>
+
+<section class="cards">
+
+    <div class="card">
+
+        <h2>Apache ActiveMQ</h2>
+
+        <p>
+
+            Classic JMS messaging using queues and topics.
+
+        </p>
+
+        <p>
+
+            ✔ Producer
+
+            <br>
+
+            ✔ Consumer
+
+            <br>
+
+            ✔ JSON Messaging
+
+            <br>
+
+            ✔ REST APIs
+
+        </p>
+
+        <a href="activemq.html">
+
+            View Project →
+
+        </a>
+
+    </div>
+
+    <div class="card">
+
+        <h2>RabbitMQ</h2>
+
+        <p>
+
+            AMQP messaging with Spring Boot.
+
+        </p>
+
+        <p>
+
+            ✔ Producer
+
+            <br>
+
+            ✔ Consumer
+
+            <br>
+
+            ✔ Exchange
+
+            <br>
+
+            ✔ Queue Binding
+
+        </p>
+
+        <a href="rabbitmq.html">
+
+            View Project →
+
+        </a>
+
+    </div>
+
+</section>
+
+<section class="content">
+
+    <h2>Technology Stack</h2>
+
+    <table>
+
+        <thead>
+
+        <tr>
+
+            <th>Technology</th>
+
+            <th>Version</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+            <td>Java</td>
+
+            <td>21+</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Spring Boot</td>
+
+            <td>Latest</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Apache ActiveMQ</td>
+
+            <td>Classic JMS</td>
+
+        </tr>
+
+        <tr>
+
+            <td>RabbitMQ</td>
+
+            <td>AMQP</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Maven</td>
+
+            <td>3.9+</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Docker</td>
+
+            <td>Supported</td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<section class="content">
+
+    <h2>Project Structure</h2>
+
+    <pre>
+
+spring-boot-queue
+
+│
+
+├── spring-boot-activemq
+
+│      ├── Producer
+│      ├── Consumer
+│      ├── Configuration
+│      └── REST APIs
+
+│
+
+├── spring-boot-rabbitmq
+
+│      ├── Producer
+│      ├── Consumer
+│      ├── Queue
+│      ├── Exchange
+│      └── REST APIs
+
+│
+
+├── README.md
+
+└── docs
+
+</pre>
+
+</section>
+
+<section class="cards">
+
+    <div class="card">
+
+        <h2>Features</h2>
+
+        <ul>
+
+            <li>Spring Boot Integration</li>
+
+            <li>Queue Messaging</li>
+
+            <li>Producer APIs</li>
+
+            <li>Consumer APIs</li>
+
+            <li>JSON Messages</li>
+
+            <li>Error Handling</li>
+
+            <li>Docker Support</li>
+
+            <li>Postman Collection</li>
+
+        </ul>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Documentation</h2>
+
+        <ul>
+
+            <li>Installation Guide</li>
+
+            <li>Architecture</li>
+
+            <li>REST APIs</li>
+
+            <li>Screenshots</li>
+
+            <li>Troubleshooting</li>
+
+            <li>Contributing</li>
+
+            <li>License</li>
+
+        </ul>
+
+    </div>
+
+</section>
+
+<section class="content">
+
+    <h2>Architecture</h2>
+
+    <pre>
+
+REST API
+
+      │
+
+      ▼
+
+Producer
+
+      │
+
+      ▼
+
+Queue Broker
+
+      │
+
+      ▼
+
+Consumer
+
+      │
+
+      ▼
+
+Application
+
+</pre>
+
+</section>
+
+<section class="content">
+
+    <h2>Quick Start</h2>
+
+    <pre><code>
+
+git clone https://github.com/dinesh-veer/spring-boot-queue.git
+
+cd spring-boot-queue
+
+mvn clean install
+
+</code></pre>
+
+</section>
+
+<section class="content">
+
+    <h2>Repository Statistics</h2>
+
+    <table>
+
+        <thead>
+
+        <tr>
+
+            <th>Category</th>
+
+            <th>Details</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+            <td>Projects</td>
+
+            <td>Apache ActiveMQ & RabbitMQ</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Language</td>
+
+            <td>Java</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Framework</td>
+
+            <td>Spring Boot</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Build Tool</td>
+
+            <td>Maven</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Documentation</td>
+
+            <td>Markdown + HTML</td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<section class="content">
+
+    <h2>Repository</h2>
+
+    <p>
+
+        <a href="https://github.com/dinesh-veer/spring-boot-queue"
+           target="_blank">
+
+            Open GitHub Repository →
+
+        </a>
+
+    </p>
+
+</section>
+
+<footer>
+
+    <p>
+
+        © 2026 Dinesh Veer
+
+    </p>
+
+    <p>
+
+        Spring Boot Queue Documentation
+
+    </p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
