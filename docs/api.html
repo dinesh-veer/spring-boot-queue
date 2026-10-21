@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>REST API Documentation | Spring Boot Queue</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+
+        Spring Boot Queue
+
+    </div>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="features.html">Features</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="installation.html">Installation</a>
+        <a href="api.html">API</a>
+        <a href="contact.html">Contact</a>
+
+    </nav>
+
+</header>
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>REST API Documentation</h1>
+
+        <p>
+
+            This page documents the REST endpoints available
+            in the Spring Boot Queue examples.
+
+        </p>
+
+    </div>
+
+</section>
+
+<section class="content">
+
+    <h1>Base URL</h1>
+
+    <pre>
+
+http://localhost:8080
+
+</pre>
+
+</section>
+
+<section class="content">
+
+    <h1>Apache ActiveMQ APIs</h1>
+
+    <table>
+
+        <thead>
+
+        <tr>
+
+            <th>Method</th>
+
+            <th>Endpoint</th>
+
+            <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+            <td>POST</td>
+
+            <td>/activemq/send</td>
+
+            <td>Send String Message</td>
+
+        </tr>
+
+        <tr>
+
+            <td>POST</td>
+
+            <td>/activemq/send-json</td>
+
+            <td>Send JSON Message</td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<section class="content">
+
+    <h2>Send String Message</h2>
+
+    <pre><code>
+
+POST /activemq/send?message=Hello ActiveMQ
+
+</code></pre>
+
+    <p><b>Response</b></p>
+
+    <pre><code>
+
+Message sent successfully.
+
+</code></pre>
+
+</section>
+
+<section class="content">
+
+    <h2>Send JSON Message</h2>
+
+    <pre><code>
+
+POST /activemq/send-json
+
+Content-Type: application/json
+
+{
+  "id":1,
+  "name":"Laptop",
+  "price":55000
+}
+
+</code></pre>
+
+    <p><b>Response</b></p>
+
+    <pre><code>
+
+JSON Message Sent Successfully.
+
+</code></pre>
+
+</section>
+
+<section class="content">
+
+    <h1>RabbitMQ APIs</h1>
+
+    <table>
+
+        <thead>
+
+        <tr>
+
+            <th>Method</th>
+
+            <th>Endpoint</th>
+
+            <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+            <td>POST</td>
+
+            <td>/rabbitmq/send</td>
+
+            <td>Send String Message</td>
+
+        </tr>
+
+        <tr>
+
+            <td>POST</td>
+
+            <td>/rabbitmq/send-json</td>
+
+            <td>Send JSON Message</td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<section class="content">
+
+    <h2>Send String Message</h2>
+
+    <pre><code>
+
+POST /rabbitmq/send?message=Hello RabbitMQ
+
+</code></pre>
+
+    <p><b>Response</b></p>
+
+    <pre><code>
+
+Message sent successfully.
+
+</code></pre>
+
+</section>
+
+<section class="content">
+
+    <h2>Send JSON Message</h2>
+
+    <pre><code>
+
+POST /rabbitmq/send-json
+
+Content-Type: application/json
+
+{
+  "id":10,
+  "name":"Keyboard",
+  "price":1500
+}
+
+</code></pre>
+
+    <p><b>Response</b></p>
+
+    <pre><code>
+
+JSON Message Sent Successfully.
+
+</code></pre>
+
+</section>
+
+<section class="content">
+
+    <h1>HTTP Status Codes</h1>
+
+    <table>
+
+        <thead>
+
+        <tr>
+
+            <th>Status</th>
+
+            <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+            <td>200 OK</td>
+
+            <td>Request processed successfully.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>400 Bad Request</td>
+
+            <td>Invalid request payload.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>404 Not Found</td>
+
+            <td>Endpoint not available.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>500 Internal Server Error</td>
+
+            <td>Unexpected server error.</td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<section class="content">
+
+    <h1>Postman Testing</h1>
+
+    <ol>
+
+        <li>Start Docker containers.</li>
+
+        <li>Run the Spring Boot application.</li>
+
+        <li>Open Postman.</li>
+
+        <li>Create a POST request.</li>
+
+        <li>Call one of the endpoints.</li>
+
+        <li>Verify the consumer logs.</li>
+
+    </ol>
+
+</section>
+
+<section class="content">
+
+    <h1>API Flow</h1>
+
+    <pre>
+
+Client
+
+   │
+
+   ▼
+
+REST Controller
+
+   │
+
+   ▼
+
+Producer
+
+   │
+
+   ▼
+
+Broker
+
+   │
+
+   ▼
+
+Consumer
+
+</pre>
+
+</section>
+
+<section class="content">
+
+    <h1>Best Practices</h1>
+
+    <ul>
+
+        <li>Validate request payloads.</li>
+
+        <li>Use JSON for structured messages.</li>
+
+        <li>Handle exceptions gracefully.</li>
+
+        <li>Log message processing.</li>
+
+        <li>Implement retries for failures.</li>
+
+        <li>Monitor broker health.</li>
+
+    </ul>
+
+</section>
+
+<footer>
+
+    <p>
+
+        © 2026 Dinesh Veer
+
+    </p>
+
+    <p>
+
+        Spring Boot Queue Documentation
+
+    </p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
