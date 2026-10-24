@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Architecture | Spring Boot Queue</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        Spring Boot Queue
+    </div>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="activemq.html">ActiveMQ</a>
+        <a href="rabbitmq.html">RabbitMQ</a>
+        <a href="features.html">Features</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="installation.html">Installation</a>
+        <a href="api.html">API</a>
+
+    </nav>
+
+</header>
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>System Architecture</h1>
+
+        <p>
+
+            Understand how producers, queues, brokers and consumers
+            communicate in the Spring Boot Queue examples.
+
+        </p>
+
+    </div>
+
+</section>
+
+<section class="content">
+
+    <h1>Architecture Overview</h1>
+
+    <p>
+
+        The repository demonstrates asynchronous communication using
+        Spring Boot with Apache ActiveMQ and RabbitMQ.
+        Both implementations follow a producer-consumer pattern where
+        messages are exchanged through a broker instead of direct
+        service-to-service communication.
+
+    </p>
+
+</section>
+
+<section class="content">
+
+    <h2>High-Level Architecture</h2>
+
+    <pre>
+
+                REST Client
+
+                     │
+
+                     ▼
+
+        Spring Boot REST Controller
+
+                     │
+
+                     ▼
+
+              Producer Service
+
+                     │
+
+                     ▼
+
+        Message Broker (Queue)
+
+        ┌──────────────────────┐
+        │   ActiveMQ / RabbitMQ │
+        └──────────────────────┘
+
+                     │
+
+                     ▼
+
+             Consumer Service
+
+                     │
+
+                     ▼
+
+          Business Processing
+
+</pre>
+
+</section>
+
+<section class="content">
+
+    <h2>Message Flow</h2>
+
+    <table>
+
+        <thead>
+
+        <tr>
+
+            <th>Step</th>
+
+            <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+            <td>1</td>
+
+            <td>Client invokes REST endpoint.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>2</td>
+
+            <td>Controller validates request.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>3</td>
+
+            <td>Producer publishes the message.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>4</td>
+
+            <td>Broker stores the message.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>5</td>
+
+            <td>Consumer receives the message.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>6</td>
+
+            <td>Business logic processes the payload.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>7</td>
+
+            <td>Application logs successful processing.</td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<section class="content">
+
+    <h2>Producer Responsibilities</h2>
+
+    <ul>
+
+        <li>Accept REST requests.</li>
+
+        <li>Validate request payload.</li>
+
+        <li>Convert Java objects to messages.</li>
+
+        <li>Publish messages to broker.</li>
+
+        <li>Handle publishing failures.</li>
+
+    </ul>
+
+</section>
+
+<section class="content">
+
+    <h2>Consumer Responsibilities</h2>
+
+    <ul>
+
+        <li>Listen for incoming messages.</li>
+
+        <li>Deserialize payload.</li>
+
+        <li>Process business logic.</li>
+
+        <li>Log message status.</li>
+
+        <li>Handle processing exceptions.</li>
+
+    </ul>
+
+</section>
+
+<section class="content">
+
+    <h2>Broker Responsibilities</h2>
+
+    <table>
+
+        <thead>
+
+        <tr>
+
+            <th>Responsibility</th>
+
+            <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+            <td>Queue Management</td>
+
+            <td>Stores messages until consumed.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Routing</td>
+
+            <td>Routes messages to consumers.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Persistence</td>
+
+            <td>Stores durable messages.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Delivery</td>
+
+            <td>Ensures reliable message delivery.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Monitoring</td>
+
+            <td>Tracks queue statistics.</td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<section class="content">
+
+    <h2>Architecture Comparison</h2>
+
+    <table>
+
+        <thead>
+
+        <tr>
+
+            <th>Feature</th>
+
+            <th>ActiveMQ</th>
+
+            <th>RabbitMQ</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+            <td>Protocol</td>
+
+            <td>JMS</td>
+
+            <td>AMQP</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Exchange</td>
+
+            <td>No</td>
+
+            <td>Yes</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Routing Key</td>
+
+            <td>No</td>
+
+            <td>Yes</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Queue</td>
+
+            <td>Yes</td>
+
+            <td>Yes</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Producer</td>
+
+            <td>Yes</td>
+
+            <td>Yes</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Consumer</td>
+
+            <td>Yes</td>
+
+            <td>Yes</td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<section class="content">
+
+    <h2>Benefits</h2>
+
+    <ul>
+
+        <li>Loose coupling between services.</li>
+
+        <li>Reliable asynchronous communication.</li>
+
+        <li>Scalable architecture.</li>
+
+        <li>Improved fault tolerance.</li>
+
+        <li>High throughput messaging.</li>
+
+        <li>Independent producer and consumer execution.</li>
+
+    </ul>
+
+</section>
+
+<section class="content">
+
+    <h2>Recommended Use Cases</h2>
+
+    <ul>
+
+        <li>Order Processing</li>
+
+        <li>Email Notifications</li>
+
+        <li>Payment Processing</li>
+
+        <li>Inventory Updates</li>
+
+        <li>Log Aggregation</li>
+
+        <li>Background Jobs</li>
+
+        <li>Microservices Communication</li>
+
+    </ul>
+
+</section>
+
+<footer>
+
+    <p>
+
+        © 2026 Dinesh Veer
+
+    </p>
+
+    <p>
+
+        Spring Boot Queue Documentation
+
+    </p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
