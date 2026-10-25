@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Docker Guide | Spring Boot Queue</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+
+        Spring Boot Queue
+
+    </div>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="features.html">Features</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="installation.html">Installation</a>
+        <a href="api.html">API</a>
+        <a href="docker.html">Docker</a>
+        <a href="contact.html">Contact</a>
+
+    </nav>
+
+</header>
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>Docker Guide</h1>
+
+        <p>
+
+            Run Apache ActiveMQ and RabbitMQ locally using Docker
+            for development and testing.
+
+        </p>
+
+    </div>
+
+</section>
+
+<section class="content">
+
+    <h1>Overview</h1>
+
+    <p>
+
+        The repository includes Docker Compose configurations
+        to quickly start the required messaging brokers without
+        installing them manually.
+
+    </p>
+
+</section>
+
+<section class="content">
+
+    <h2>Prerequisites</h2>
+
+    <ul>
+
+        <li>Docker Desktop</li>
+
+        <li>Docker Compose</li>
+
+        <li>Java 21+</li>
+
+        <li>Maven</li>
+
+    </ul>
+
+</section>
+
+<section class="content">
+
+    <h2>Verify Docker</h2>
+
+    <pre><code>
+
+docker --version
+
+docker compose version
+
+docker ps
+
+</code></pre>
+
+</section>
+
+<section class="content">
+
+    <h2>Start ActiveMQ</h2>
+
+    <pre><code>
+
+cd spring-boot-activemq
+
+docker compose up -d
+
+</code></pre>
+
+</section>
+
+<section class="content">
+
+    <h2>Stop ActiveMQ</h2>
+
+    <pre><code>
+
+docker compose down
+
+</code></pre>
+
+</section>
+
+<section class="content">
+
+    <h2>Start RabbitMQ</h2>
+
+    <pre><code>
+
+cd spring-boot-rabbitmq
+
+docker compose up -d
+
+</code></pre>
+
+</section>
+
+<section class="content">
+
+    <h2>Stop RabbitMQ</h2>
+
+    <pre><code>
+
+docker compose down
+
+</code></pre>
+
+</section>
+
+<section class="content">
+
+    <h2>Check Running Containers</h2>
+
+    <pre><code>
+
+docker ps
+
+</code></pre>
+
+</section>
+
+<section class="content">
+
+    <h2>View Logs</h2>
+
+    <pre><code>
+
+docker logs &lt;container-name&gt;
+
+</code></pre>
+
+</section>
+
+<section class="content">
+
+    <h2>Restart Container</h2>
+
+    <pre><code>
+
+docker restart &lt;container-name&gt;
+
+</code></pre>
+
+</section>
+
+<section class="content">
+
+    <h2>Remove Containers</h2>
+
+    <pre><code>
+
+docker compose down -v
+
+</code></pre>
+
+</section>
+
+<section class="content">
+
+    <h2>Useful Docker Commands</h2>
+
+    <table>
+
+        <thead>
+
+        <tr>
+
+            <th>Command</th>
+
+            <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+            <td>docker ps</td>
+
+            <td>List running containers.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>docker images</td>
+
+            <td>List downloaded images.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>docker logs</td>
+
+            <td>Display container logs.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>docker exec -it</td>
+
+            <td>Open container shell.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>docker restart</td>
+
+            <td>Restart container.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>docker stop</td>
+
+            <td>Stop container.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>docker compose up -d</td>
+
+            <td>Start services.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>docker compose down</td>
+
+            <td>Stop services.</td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<section class="content">
+
+    <h2>Container Architecture</h2>
+
+    <pre>
+
+             Spring Boot Application
+
+                      │
+
+                      ▼
+
+        ┌──────────────────────────────┐
+
+        │ Docker Container             │
+
+        │                              │
+
+        │  ActiveMQ / RabbitMQ Broker  │
+
+        └──────────────────────────────┘
+
+                      │
+
+                      ▼
+
+              Message Processing
+
+</pre>
+
+</section>
+
+<section class="content">
+
+    <h2>Recommended Workflow</h2>
+
+    <ol>
+
+        <li>Start Docker Desktop.</li>
+
+        <li>Run Docker Compose.</li>
+
+        <li>Verify broker container.</li>
+
+        <li>Start Spring Boot application.</li>
+
+        <li>Invoke REST APIs.</li>
+
+        <li>Monitor broker dashboard.</li>
+
+        <li>Check application logs.</li>
+
+    </ol>
+
+</section>
+
+<section class="content">
+
+    <h2>Common Issues</h2>
+
+    <table>
+
+        <thead>
+
+        <tr>
+
+            <th>Issue</th>
+
+            <th>Solution</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+            <td>Docker daemon not running</td>
+
+            <td>Start Docker Desktop.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Port already allocated</td>
+
+            <td>Stop conflicting process.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Container exited</td>
+
+            <td>Check container logs.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Broker unavailable</td>
+
+            <td>Restart Docker Compose.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Image not found</td>
+
+            <td>Run docker pull or docker compose up again.</td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<section class="content">
+
+    <h2>Best Practices</h2>
+
+    <ul>
+
+        <li>Keep Docker Desktop updated.</li>
+
+        <li>Use Docker Compose for local development.</li>
+
+        <li>Monitor broker logs regularly.</li>
+
+        <li>Remove unused images periodically.</li>
+
+        <li>Persist broker data using Docker volumes.</li>
+
+        <li>Keep broker configuration externalized.</li>
+
+    </ul>
+
+</section>
+
+<footer>
+
+    <p>
+
+        © 2026 Dinesh Veer
+
+    </p>
+
+    <p>
+
+        Spring Boot Queue Documentation
+
+    </p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
