@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Installation | Spring Boot Queue</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+
+        Spring Boot Queue
+
+    </div>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="features.html">Features</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="installation.html">Installation</a>
+        <a href="api.html">API</a>
+        <a href="contact.html">Contact</a>
+
+    </nav>
+
+</header>
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>Installation Guide</h1>
+
+        <p>
+
+            Follow these steps to configure and run the
+            Spring Boot Queue examples on your local machine.
+
+        </p>
+
+    </div>
+
+</section>
+
+<section class="content">
+
+    <h1>Prerequisites</h1>
+
+    <ul>
+
+        <li>Java 21 or later</li>
+
+        <li>Apache Maven 3.9+</li>
+
+        <li>Docker Desktop</li>
+
+        <li>Git</li>
+
+        <li>IntelliJ IDEA / Eclipse / VS Code</li>
+
+    </ul>
+
+</section>
+
+<section class="content">
+
+    <h2>Clone Repository</h2>
+
+    <pre><code>
+
+git clone https://github.com/dinesh-veer/spring-boot-queue.git
+
+cd spring-boot-queue
+
+</code></pre>
+
+</section>
+
+<section class="content">
+
+    <h2>Verify Java</h2>
+
+    <pre><code>
+
+java --version
+
+javac --version
+
+</code></pre>
+
+</section>
+
+<section class="content">
+
+    <h2>Verify Maven</h2>
+
+    <pre><code>
+
+mvn --version
+
+</code></pre>
+
+</section>
+
+<section class="content">
+
+    <h2>Start Docker</h2>
+
+    <p>
+
+        Ensure Docker Desktop is running before starting
+        ActiveMQ or RabbitMQ.
+
+    </p>
+
+</section>
+
+<section class="content">
+
+    <h2>Start ActiveMQ</h2>
+
+    <pre><code>
+
+cd spring-boot-activemq
+
+docker compose up -d
+
+</code></pre>
+
+</section>
+
+<section class="content">
+
+    <h2>Start RabbitMQ</h2>
+
+    <pre><code>
+
+cd spring-boot-rabbitmq
+
+docker compose up -d
+
+</code></pre>
+
+</section>
+
+<section class="content">
+
+    <h2>Build Project</h2>
+
+    <pre><code>
+
+mvn clean install
+
+</code></pre>
+
+</section>
+
+<section class="content">
+
+    <h2>Run ActiveMQ Application</h2>
+
+    <pre><code>
+
+cd spring-boot-activemq
+
+mvn spring-boot:run
+
+</code></pre>
+
+</section>
+
+<section class="content">
+
+    <h2>Run RabbitMQ Application</h2>
+
+    <pre><code>
+
+cd spring-boot-rabbitmq
+
+mvn spring-boot:run
+
+</code></pre>
+
+</section>
+
+<section class="content">
+
+    <h2>Verify Application</h2>
+
+    <table>
+
+        <thead>
+
+        <tr>
+
+            <th>Component</th>
+
+            <th>Status</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+            <td>Spring Boot</td>
+
+            <td>Running</td>
+
+        </tr>
+
+        <tr>
+
+            <td>ActiveMQ Broker</td>
+
+            <td>Running</td>
+
+        </tr>
+
+        <tr>
+
+            <td>RabbitMQ Broker</td>
+
+            <td>Running</td>
+
+        </tr>
+
+        <tr>
+
+            <td>REST APIs</td>
+
+            <td>Available</td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<section class="content">
+
+    <h2>Useful Maven Commands</h2>
+
+    <pre><code>
+
+mvn clean
+
+mvn compile
+
+mvn test
+
+mvn package
+
+mvn install
+
+</code></pre>
+
+</section>
+
+<section class="content">
+
+    <h2>Useful Docker Commands</h2>
+
+    <pre><code>
+
+docker ps
+
+docker images
+
+docker compose up -d
+
+docker compose down
+
+docker logs <container-name>
+
+</code></pre>
+
+</section>
+
+<section class="content">
+
+    <h2>Import into IntelliJ IDEA</h2>
+
+    <ol>
+
+        <li>Open IntelliJ IDEA.</li>
+
+        <li>Select <strong>Open</strong>.</li>
+
+        <li>Choose the repository folder.</li>
+
+        <li>Import as a Maven project.</li>
+
+        <li>Wait for dependencies to download.</li>
+
+        <li>Run the Spring Boot application.</li>
+
+    </ol>
+
+</section>
+
+<section class="content">
+
+    <h2>Troubleshooting</h2>
+
+    <table>
+
+        <thead>
+
+        <tr>
+
+            <th>Issue</th>
+
+            <th>Solution</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+            <td>Port already in use</td>
+
+            <td>Stop existing application or change server port.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Docker container not starting</td>
+
+            <td>Restart Docker Desktop.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Maven dependency failure</td>
+
+            <td>Run <code>mvn clean install -U</code>.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Broker connection refused</td>
+
+            <td>Verify broker container is running.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Application startup failure</td>
+
+            <td>Check application.properties configuration.</td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<footer>
+
+    <p>
+
+        © 2026 Dinesh Veer
+
+    </p>
+
+    <p>
+
+        Spring Boot Queue Documentation
+
+    </p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
