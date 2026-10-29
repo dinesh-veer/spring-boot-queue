@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>RabbitMQ | Spring Boot Queue</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+
+        Spring Boot Queue
+
+    </div>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="activemq.html">ActiveMQ</a>
+        <a href="rabbitmq.html">RabbitMQ</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="installation.html">Installation</a>
+        <a href="api.html">API</a>
+
+    </nav>
+
+</header>
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>Spring Boot RabbitMQ</h1>
+
+        <p>
+
+            Learn messaging with RabbitMQ using
+            Spring Boot and AMQP through practical examples.
+
+        </p>
+
+    </div>
+
+</section>
+
+<section class="content">
+
+    <h1>Overview</h1>
+
+    <p>
+
+        This project demonstrates asynchronous messaging using
+        RabbitMQ and Spring Boot.
+
+        It includes Producer,
+        Consumer,
+        Exchange,
+        Queue,
+        Routing Key,
+        REST APIs,
+        and JSON message support.
+
+    </p>
+
+</section>
+
+<section class="cards">
+
+    <div class="card">
+
+        <h2>Producer</h2>
+
+        <p>
+
+            Publishes messages to a configured RabbitMQ Exchange.
+
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Exchange</h2>
+
+        <p>
+
+            Routes incoming messages
+            to one or more queues.
+
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Queue</h2>
+
+        <p>
+
+            Stores messages until
+            they are consumed.
+
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Consumer</h2>
+
+        <p>
+
+            Processes messages
+            received from the queue.
+
+        </p>
+
+    </div>
+
+</section>
+
+<section class="content">
+
+    <h2>RabbitMQ Architecture</h2>
+
+    <pre>
+
+REST Client
+
+      │
+
+      ▼
+
+Producer
+
+      │
+
+      ▼
+
+Exchange
+
+      │
+
+      ▼
+
+Routing Key
+
+      │
+
+      ▼
+
+Queue
+
+      │
+
+      ▼
+
+Consumer
+
+</pre>
+
+</section>
+
+<section class="content">
+
+    <h2>Message Flow</h2>
+
+    <table>
+
+        <thead>
+
+        <tr>
+
+            <th>Step</th>
+
+            <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+            <td>1</td>
+
+            <td>Client invokes Producer API.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>2</td>
+
+            <td>Producer publishes message to Exchange.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>3</td>
+
+            <td>Exchange evaluates Routing Key.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>4</td>
+
+            <td>Message is delivered to Queue.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>5</td>
+
+            <td>Consumer processes the message.</td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<section class="content">
+
+    <h2>Features</h2>
+
+    <ul>
+
+        <li>Spring Boot Integration</li>
+
+        <li>RabbitMQ Messaging</li>
+
+        <li>Producer</li>
+
+        <li>Consumer</li>
+
+        <li>Exchange</li>
+
+        <li>Queue Binding</li>
+
+        <li>Routing Key</li>
+
+        <li>JSON Messages</li>
+
+        <li>REST APIs</li>
+
+        <li>Docker Support</li>
+
+    </ul>
+
+</section>
+
+<section class="content">
+
+    <h2>Project Structure</h2>
+
+    <pre>
+
+spring-boot-rabbitmq
+
+│
+
+├── controller
+
+├── producer
+
+├── consumer
+
+├── config
+
+├── model
+
+├── service
+
+└── resources
+
+</pre>
+
+</section>
+
+<section class="content">
+
+    <h2>RabbitMQ Components</h2>
+
+    <table>
+
+        <thead>
+
+        <tr>
+
+            <th>Component</th>
+
+            <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+            <td>Exchange</td>
+
+            <td>Receives messages from Producer.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Queue</td>
+
+            <td>Stores messages.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Binding</td>
+
+            <td>Connects Exchange and Queue.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Routing Key</td>
+
+            <td>Determines message destination.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Consumer</td>
+
+            <td>Processes messages.</td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<section class="content">
+
+    <h2>REST APIs</h2>
+
+    <table>
+
+        <thead>
+
+        <tr>
+
+            <th>Method</th>
+
+            <th>Endpoint</th>
+
+            <th>Description</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+            <td>POST</td>
+
+            <td>/api/messages</td>
+
+            <td>Send String Message</td>
+
+        </tr>
+
+        <tr>
+
+            <td>POST</td>
+
+            <td>/api/messages/json</td>
+
+            <td>Send JSON Message</td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<section class="content">
+
+    <h2>Docker</h2>
+
+    <pre><code>
+
+docker compose up -d
+
+</code></pre>
+
+</section>
+
+<section class="content">
+
+    <h2>Run Project</h2>
+
+    <pre><code>
+
+mvn clean install
+
+mvn spring-boot:run
+
+</code></pre>
+
+</section>
+
+<section class="content">
+
+    <h2>Testing</h2>
+
+    <ol>
+
+        <li>Start RabbitMQ.</li>
+
+        <li>Run Spring Boot application.</li>
+
+        <li>Invoke Producer API.</li>
+
+        <li>Verify Queue receives messages.</li>
+
+        <li>Check Consumer logs.</li>
+
+    </ol>
+
+</section>
+
+<section class="content">
+
+    <h2>Screenshots</h2>
+
+    <p>
+
+        Store screenshots inside
+
+        <b>docs/screenshots/rabbitmq/</b>
+
+    </p>
+
+    <img src="screenshots/rabbitmq/dashboard.png"
+         alt="RabbitMQ Dashboard"
+         width="100%">
+
+    <img src="screenshots/rabbitmq/postman.png"
+         alt="RabbitMQ Postman"
+         width="100%">
+
+    <img src="screenshots/rabbitmq/console.png"
+         alt="Console Output"
+         width="100%">
+
+</section>
+
+<section class="content">
+
+    <h2>Best Practices</h2>
+
+    <ul>
+
+        <li>Use durable queues for persistent messages.</li>
+
+        <li>Configure acknowledgements appropriately.</li>
+
+        <li>Implement retry mechanisms.</li>
+
+        <li>Use Dead Letter Exchanges for failures.</li>
+
+        <li>Monitor queue depth and throughput.</li>
+
+        <li>Keep consumers stateless and idempotent.</li>
+
+    </ul>
+
+</section>
+
+<section class="content">
+
+    <h2>Advantages</h2>
+
+    <ul>
+
+        <li>Reliable asynchronous messaging.</li>
+
+        <li>Supports multiple messaging patterns.</li>
+
+        <li>High throughput.</li>
+
+        <li>Scalable architecture.</li>
+
+        <li>Easy integration with Spring Boot.</li>
+
+    </ul>
+
+</section>
+
+<footer>
+
+    <p>
+
+        © 2026 Dinesh Veer
+
+    </p>
+
+    <p>
+
+        Spring Boot Queue Documentation
+
+    </p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
