@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Troubleshooting | Spring Boot Queue</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+
+        Spring Boot Queue
+
+    </div>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="features.html">Features</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="installation.html">Installation</a>
+        <a href="api.html">API</a>
+        <a href="docker.html">Docker</a>
+        <a href="screenshots.html">Screenshots</a>
+        <a href="troubleshooting.html">Troubleshooting</a>
+        <a href="contact.html">Contact</a>
+
+    </nav>
+
+</header>
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>Troubleshooting Guide</h1>
+
+        <p>
+
+            Common problems encountered while running the
+            Spring Boot Queue examples and their solutions.
+
+        </p>
+
+    </div>
+
+</section>
+
+<section class="content">
+
+    <h1>Overview</h1>
+
+    <p>
+
+        This guide covers the most common issues related to
+        Spring Boot, Maven, Docker, ActiveMQ, RabbitMQ,
+        Java, networking and IDE configuration.
+
+    </p>
+
+</section>
+
+<section class="content">
+
+    <h2>Common Issues</h2>
+
+    <table>
+
+        <thead>
+
+        <tr>
+
+            <th>Issue</th>
+
+            <th>Possible Cause</th>
+
+            <th>Solution</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        <tr>
+
+            <td>Application won't start</td>
+
+            <td>Configuration error</td>
+
+            <td>Check application.properties and logs.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Port 8080 already in use</td>
+
+            <td>Another application is running</td>
+
+            <td>Stop the application or change server.port.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Maven build failed</td>
+
+            <td>Missing dependencies</td>
+
+            <td>Run mvn clean install -U.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Java not found</td>
+
+            <td>JAVA_HOME not configured</td>
+
+            <td>Configure JAVA_HOME correctly.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Docker daemon unavailable</td>
+
+            <td>Docker Desktop stopped</td>
+
+            <td>Start Docker Desktop.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Container exits immediately</td>
+
+            <td>Invalid Docker configuration</td>
+
+            <td>Check docker logs.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>ActiveMQ not reachable</td>
+
+            <td>Broker not running</td>
+
+            <td>Start Docker Compose.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>RabbitMQ connection refused</td>
+
+            <td>Broker unavailable</td>
+
+            <td>Verify container status.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Consumer not receiving messages</td>
+
+            <td>Queue mismatch</td>
+
+            <td>Verify queue name configuration.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Producer API returns 500</td>
+
+            <td>Broker connection failure</td>
+
+            <td>Check broker URL and credentials.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>JSON serialization failed</td>
+
+            <td>Invalid payload</td>
+
+            <td>Verify JSON structure.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>ClassNotFoundException</td>
+
+            <td>Dependency missing</td>
+
+            <td>Reload Maven project.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Bean creation failed</td>
+
+            <td>Spring configuration issue</td>
+
+            <td>Review stack trace carefully.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Message lost</td>
+
+            <td>Non-durable queue</td>
+
+            <td>Enable durable queues.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>IDE cannot resolve imports</td>
+
+            <td>Maven not synchronized</td>
+
+            <td>Reload Maven dependencies.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Docker image not found</td>
+
+            <td>Image missing locally</td>
+
+            <td>Run docker compose up again.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Application hangs during startup</td>
+
+            <td>Broker unavailable</td>
+
+            <td>Start broker before application.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Connection timeout</td>
+
+            <td>Firewall or network issue</td>
+
+            <td>Verify host and ports.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Consumer processes duplicate messages</td>
+
+            <td>No acknowledgement strategy</td>
+
+            <td>Configure acknowledgements properly.</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Slow message processing</td>
+
+            <td>Large payloads</td>
+
+            <td>Optimize payload size.</td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<section class="content">
+
+    <h2>Useful Commands</h2>
+
+    <pre><code>
+
+mvn clean install
+
+mvn spring-boot:run
+
+docker ps
+
+docker logs <container>
+
+docker compose up -d
+
+docker compose down
+
+</code></pre>
+
+</section>
+
+<section class="content">
+
+    <h2>Checklist</h2>
+
+    <ul>
+
+        <li>Java installed.</li>
+
+        <li>Maven installed.</li>
+
+        <li>Docker Desktop running.</li>
+
+        <li>Broker container started.</li>
+
+        <li>Correct application.properties.</li>
+
+        <li>Required ports are available.</li>
+
+        <li>Maven dependencies downloaded.</li>
+
+        <li>REST endpoints accessible.</li>
+
+        <li>Producer sending messages.</li>
+
+        <li>Consumer receiving messages.</li>
+
+    </ul>
+
+</section>
+
+<section class="content">
+
+    <h2>Best Practices</h2>
+
+    <ul>
+
+        <li>Use the latest Java LTS version.</li>
+
+        <li>Keep Maven dependencies updated.</li>
+
+        <li>Always verify broker health before testing.</li>
+
+        <li>Use Docker Compose for local development.</li>
+
+        <li>Monitor application logs.</li>
+
+        <li>Use meaningful logging for producers and consumers.</li>
+
+        <li>Validate JSON payloads before sending.</li>
+
+        <li>Keep broker credentials externalized.</li>
+
+    </ul>
+
+</section>
+
+<section class="content">
+
+    <h2>Still Having Problems?</h2>
+
+    <p>
+
+        If you are unable to resolve an issue:
+
+    </p>
+
+    <ul>
+
+        <li>Review the application logs.</li>
+
+        <li>Check Docker container logs.</li>
+
+        <li>Verify Maven dependencies.</li>
+
+        <li>Restart Docker and the application.</li>
+
+        <li>Create a GitHub issue with logs and steps to reproduce.</li>
+
+    </ul>
+
+</section>
+
+<footer>
+
+    <p>
+
+        © 2026 Dinesh Veer
+
+    </p>
+
+    <p>
+
+        Spring Boot Queue Documentation
+
+    </p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
